@@ -1,0 +1,16 @@
+services:
+  just-loan-fcr-api:
+    platform: linux/amd64
+    image: 982860581031.dkr.ecr.ap-southeast-1.amazonaws.com/fcr-api:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: just-loan-fcr-api
+    working_dir: /app
+    restart: always
+    volumes:
+      - ./uploads:/app/uploads
+    env_file:
+      - .env
+    ports:
+      - 3113:3113
